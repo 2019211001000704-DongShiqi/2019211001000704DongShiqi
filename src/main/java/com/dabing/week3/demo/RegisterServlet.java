@@ -1,10 +1,12 @@
 package com.dabing.week3.demo;
 
 import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+@WebServlet(name = "RegisterServlet", value = "/RegisterServlet")
 //automatic -new --> servlet
 public class RegisterServlet extends HttpServlet {
     @Override
