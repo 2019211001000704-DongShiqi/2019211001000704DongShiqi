@@ -13,10 +13,15 @@
         <servlet-class>com.dabing.week3.demo.LifeCycleServlet</servlet-class>
     </servlet>
     <!--automatic code-->
-    <servlet>
+    <!--<servlet>
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.dabing.week3.demo.RegisterServlet</servlet-class>
-    </servlet>
+    </servlet>-->
+    <!--<servlet>
+        <servlet-name>ConfigDemoServlet</servlet-name>
+        <servlet-class>com.dabing.week4.demo.ConfigDemoServlet</servlet-class>
+    </servlet>-->
+
     <servlet-mapping>
     <servlet-name>anyName</servlet-name>
     <url-pattern>/hello</url-pattern><!-- url must start with /-->
@@ -26,12 +31,31 @@
         <url-pattern>/Life</url-pattern>
         <!--/Life ==LifeCycleServlet==com.dabing.week3.demo.LifeCycleServlet-->
     </servlet-mapping>
-    <servlet-mapping>
+    <!--<servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/register</url-pattern><!--write this url in action-->
+        <url-pattern>/register</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfigDemoServlet</servlet-name>
+        <url-pattern>/config</url-pattern>
+    </servlet-mapping>-->
     <!-- x=5,a=x so we can say a=5
     so /hello==com.dabing.week2.demo.HelloWorldservlet
     -->
-    
+    <context-param>
+        <param-name>driver</param-name>
+        <param-value>com.microsoft.sqlserver.jdbc.SQLServerDriver</param-value>
+    </context-param>
+    <context-param>
+        <param-name>url</param-name>
+        <param-value>jdbc:sqlserver://localhost;databaseName=userdb;</param-value>
+    </context-param>
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>sa</param-value>
+    </context-param>
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>123456</param-value>
+    </context-param>
 </web-app>
