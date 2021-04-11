@@ -19,7 +19,8 @@ public class RegisterServlet extends HttpServlet {
     Connection con=null;
     @Override
     public void init() throws ServletException {
-        String driver=getServletConfig().getServletContext().getInitParameter("driver");
+        super.init();
+        /*String driver=getServletConfig().getServletContext().getInitParameter("driver");
         String url=getServletConfig().getServletContext().getInitParameter("url");
         String username=getServletConfig().getServletContext().getInitParameter("username");
         String password=getServletConfig().getServletContext().getInitParameter("password");
@@ -29,7 +30,8 @@ public class RegisterServlet extends HttpServlet {
             System.out.println("init()-->"+con);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-        }
+        }*/
+        con=(Connection) getServletContext().getAttribute("con");
     }
 
     @Override
@@ -62,11 +64,14 @@ public class RegisterServlet extends HttpServlet {
             pstmt.setString(4,Gender);
             pstmt.setString(5,Date);
             pstmt.executeUpdate();
+            response.sendRedirect("login.jsp");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        response.setContentType("text/html");
+
+        /*response.setContentType("text/html");
         PrintWriter out=response.getWriter();
+        //here is html code --- move these html code in a jsp page - userList.jsp
         out.println("<html>");
         out.println("<head><title>register</title></head>");
         out.println("<body>");
@@ -76,6 +81,7 @@ public class RegisterServlet extends HttpServlet {
         ResultSet rs= null;
         try {
             rs = con.createStatement().executeQuery(sql2);
+            /*
             while(rs.next()){
                 int id=rs.getInt("id");
                 String username=rs.getString("username");
@@ -86,12 +92,20 @@ public class RegisterServlet extends HttpServlet {
                 SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
                 out.println("<tr><td>"+id+"</td><td>"+username+"</td><td>"+password1+"</td><td>"+email+"</td><td>"+gender+"</td><td>"+sdf.format(birthdate)+"</td></tr>");
             }
+
+
+
+            request.setAttribute("rsname",rs);
+        request.getRequestDispatcher("userList.jsp").forward(request,response);
+            System.out.println("i am in RegisterServlet-->doPost()-->after forward()");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        out.println("</table>");
-        out.println("</body>");
-        out.println("</html>");
+        //out.println("</table>");
+        //out.println("</body>");
+        //out.println("</html>");
+    */
+
     }
 
     @Override
