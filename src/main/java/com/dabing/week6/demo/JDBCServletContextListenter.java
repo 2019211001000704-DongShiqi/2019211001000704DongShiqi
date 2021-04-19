@@ -11,7 +11,7 @@ import java.sql.SQLException;
 //tell tomcat this class is a listener class - how ?
 
 @WebListener
-public class JDBCServletContextListenter implements ServletContextListener {
+public class  JDBCServletContextListenter implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         //like a main() method for this web app
