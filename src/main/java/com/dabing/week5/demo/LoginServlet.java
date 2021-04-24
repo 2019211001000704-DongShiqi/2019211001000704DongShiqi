@@ -54,7 +54,33 @@ public class LoginServlet extends HttpServlet {
             if (user!=null){
                 //valid
                 //set user into request
-                request.setAttribute("user",user);//get user info in jsp
+                String rememberMe=request.getParameter("rememberMe");
+                if(rememberMe!=null&&rememberMe.equals("1")){
+                    Cookie usernameCookie=new Cookie("cUsername",user.getUsername());
+                    Cookie passwordCookie=new Cookie("cPassword",user.getPassword());
+                    Cookie rememberMeCookie=new Cookie("cRememberMe",rememberMe);
+
+
+                    usernameCookie.setMaxAge(5);
+                    passwordCookie.setMaxAge(5);
+                    rememberMeCookie.setMaxAge(5);
+
+
+                    response.addCookie(usernameCookie);
+                    response.addCookie(passwordCookie);
+                    response.addCookie(rememberMeCookie);
+                }
+
+                HttpSession session=request.getSession();
+                System.out.println("session id-->"+session.getId());
+                session.setMaxInactiveInterval(10);
+                //week 8 code - demo #1
+//                    Cookie c=new Cookie("sessionid",""+user.getId());
+//                    c.setMaxAge(10*60);
+//                    response.addCookie(c);
+                // week 8 0- change request(one page) to session - so We can get session attribute in many jsp page - login.jsp and header.jsp
+
+                session.setAttribute("user",user);//get user info in session
                 request.getRequestDispatcher("WEB-INF/views/userInfo.jsp").forward(request,response);
             }else{
                 //invalid
