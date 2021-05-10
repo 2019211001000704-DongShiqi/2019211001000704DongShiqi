@@ -61,4 +61,12 @@
     <welcome-file-list>
         <welcome-file>home</welcome-file><!-- when you run app - first request send to home - HomeServlet-->
     </welcome-file-list>
+<!--<filter>
+        <filter-name>HelloFilter</filter-name>
+        <filter-class>com.dongshiqi.filter.HelloFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>HelloFilter</filter-name>
+        <url-pattern>/hello-servlet</url-pattern>url of HelloServlet -thi filter is only for HelloServlet
+    </filter-mapping> -->
 </web-app>
