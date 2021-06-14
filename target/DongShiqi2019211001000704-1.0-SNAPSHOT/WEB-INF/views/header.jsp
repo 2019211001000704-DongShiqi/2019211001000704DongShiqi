@@ -101,7 +101,7 @@
 
 
 							<li><a href="<%=basePath%>cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-							<li><a href="<%=basePath%>Register"><i class="fa fa-crosshairs"></i> Register</a></li>
+							<li><a href="<%=basePath%>register"><i class="fa fa-crosshairs"></i> Register</a></li>
 							<li><a href="<%=basePath%>login"><i class="fa fa-lock"></i> Login</a></li>
 							<li><a href="<%=basePath%>logout"><i class="fa fa-unlock"></i> Logout</a></li>
 						</ul>
